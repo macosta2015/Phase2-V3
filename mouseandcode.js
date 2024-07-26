@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 const { launchBrowserAndNavigateToDocument } = require('./components/launchBrowserAndNavigate.js');
-const { performTest } = require('./components/newSketch.js');
+const { newSketch } = require('./components/newSketch.js');
 const { clickButtonByIndex } = require('./components/clickButtonByIndex.js');
 const copySketchFunction = require('./components/copySketchFunction.js');
 const pasteIntoSketchFunction = require('./components/pasteIntoSketchFunction.js');
@@ -22,11 +22,7 @@ const { performRightClickOptionByTitle } = require('./components/performRightCli
         // Launch browser and navigate to the document
         const newPage = await launchBrowserAndNavigateToDocument(); // Ensure this returns a newPage object
 
-        // NEW SKETCH
-        // await performTest(newPage);
 
-        const desiredIndex = 6;
-        await clickButtonByIndex(newPage, desiredIndex);
 
         // Right-click option
         // const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
