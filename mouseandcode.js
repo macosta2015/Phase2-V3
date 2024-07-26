@@ -25,8 +25,6 @@ const { performRightClickOptionByTitle } = require('./components/performRightCli
         // NEW SKETCH
         // await performTest(newPage);
 
-        // Adding extrude function to the code
-        //ORIGINAL GOOD  const desiredIndex = 5;
         const desiredIndex = 6;
         await clickButtonByIndex(newPage, desiredIndex);
 
