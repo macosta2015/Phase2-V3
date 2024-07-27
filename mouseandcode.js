@@ -22,19 +22,21 @@ const { performRightClickOptionByTitle } = require('./components/performRightCli
         // Launch browser and navigate to the document
         const newPage = await launchBrowserAndNavigateToDocument(); // Ensure this returns a newPage object
 
+        // Click button by index
+        const desiredIndex = 6;
+        await clickButtonByIndex(newPage, desiredIndex);
 
-
-        console.log("AAAAAAAAAA");
+        console.log("Waiting for user input...");
         await waitForEnter();
-        console.log("BBBBBBBBBB");
-
-
+        console.log("User pressed Enter.");
 
         // Perform right-click on the specified element
         console.log('Right-clicking on the specified element.');
-        const title = '(2)Extrude1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
+        const selector = 'div[data-id="XgmGAQ7RqnVg1wa8"]'; // Replace with the appropriate selector
+        const title = '(2) Extrude 1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
+
         const editOptions3 = await performRightClickOptionByTitle(newPage, selector, title);
-        console.log(editOptions3);
+        console.log('Right-click options:', editOptions3);
 
 
 
