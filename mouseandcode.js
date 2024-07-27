@@ -27,16 +27,16 @@ const { performRightClickOptionByTitle } = require('./components/performRightCli
 
         // Adding extrude function to the code
         //ORIGINAL GOOD  const desiredIndex = 5;
-        const desiredIndex = 5;
+        const desiredIndex = 6;
         await clickButtonByIndex(newPage, desiredIndex);
 
         // Right-click option
         // const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
-        const title = '(1) Initial Sketch'; // Replace with the desired title
-        const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
+        // const title = '(1) Initial Sketch'; // Replace with the desired title
+        // const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
         // const title = '(3) Extrude Sketch(1.03) did not regenerate properly: Select a sketch plane.'; // Replace with the desired title
-        // const selector = 'div[data-id="XgmGAQ7RqnVg1wa8"]'; // Replace with the appropriate selector
-        // const title = '(2)Extrude1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
+        const selector = 'div[data-id="XgmGAQ7RqnVg1wa8"]'; // Replace with the appropriate selector
+        const title = '(2) Extrude 1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
 
 
         console.log("AAAAAAAAAA");
