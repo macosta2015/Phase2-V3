@@ -14,7 +14,11 @@ const waitForEnter = require('./components/waitForEnter.js');
 const searchAndClickTransform = require('./components/searchAndClickTransform.js');
 const searchAndClickCustomExtrude2 = require('./components/searchAndClickCustomExtrude2.js');
 const searchAndClickExtrude = require('./components/searchAndClickExtrude.js');
-const { performRightClickOptionByTitle } = require('./components/performRightClickOptionByTitle.js');
+// const { performRightClickOptionByTitle } = require('./components/performRightClickOptionByTitle.js');
+const { performRightClickById } = require('./components/performRightClickById.js');
+
+
+
 
 (async () => {
     try {
@@ -25,17 +29,30 @@ const { performRightClickOptionByTitle } = require('./components/performRightCli
         // Click button by index
         const desiredIndex = 6;
         await clickButtonByIndex(newPage, desiredIndex);
+        const selector = 'div[data-id="XgmGAQ7RqnVg1wa8"]'; // Replace with the appropriate selector
+        const title = '(2) Extrude 1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
+        // Correctly define dataId
+        const dataId = 'XgmGAQ7RqnVg1wa8';
 
-        console.log("Waiting for user input...");
+
+        console.log("AAAAAAAAAA");
         await waitForEnter();
-        console.log("User pressed Enter.");
+        console.log("BBBBBBBBBB");
 
         // Perform right-click on the specified element
         console.log('Right-clicking on the specified element.');
-        const selector = 'div[data-id="XgmGAQ7RqnVg1wa8"]'; // Replace with the appropriate selector
-        const title = '(2) Extrude 1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
+        // const selector = 'div[data-id="XgmGAQ7RqnVg1wa8"]'; // Replace with the appropriate selector
+        // const title = '(2) Extrude 1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
 
-        const editOptions3 = await performRightClickOptionByTitle(newPage, selector, title);
+
+
+        console.log("CCCCCCCCCC");
+        await waitForEnter();
+        console.log("DDDDDDDDDD");
+        // const editOptions3 = await performRightClickOptionByTitle(newPage, selector, title);
+        const editOptions3 = await performRightClickById(newPage, dataId);
+
+
         console.log('Right-click options:', editOptions3);
 
 
