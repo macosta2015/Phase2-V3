@@ -1,26 +1,19 @@
-
-async function performRightClickById(newPage, dataId) {
+//March 26 Mario Acosta
+// performRightClickOptionByTitle.js
+async function performRightClickOptionByTitle(newPage, selector, title) {
     console.log('Right-click process started.');
 
     try {
-        // Wait for the element with the specified data-id to be available
-        const selector = `div[data-id="${dataId}"]`;
-        await newPage.waitForSelector(selector, { visible: true, timeout: 20000 });
-        console.log(`Selector "${selector}" is available.`);
-
-        // Find elements with the specified data-id
-        const elements = await newPage.$$(selector);
-        console.log(`Found ${elements.length} elements with data-id "${dataId}".`);
+        // Find elements with the specified title
+        const elements = await newPage.$$(`${selector}[data-bs-original-title="${title}"]`);
 
         if (elements.length > 0) {
-            // Scroll the first matching element into view and right-click it
-            const element = elements[0];
-            await newPage.evaluate(el => el.scrollIntoView(), element);
-            await newPage.waitFor(100); // Give some time for scrolling
-            await newPage.evaluate(el => el.click({ button: 'right' }), element);
-            console.log(`Right-clicked on the first element with data-id "${dataId}".`);
+            // Scroll into view and right-click on the first matching element
+            await elements[0].scrollIntoView();
+            await elements[0].click({ button: 'right' });
+            console.log(`Right-clicked on element with title "${title}".`);
         } else {
-            throw new Error(`No element found with data-id "${dataId}".`);
+            throw new Error(`No element found with title "${title}" using selector "${selector}".`);
         }
 
         // Wait for the context menu item to appear
@@ -44,7 +37,7 @@ async function performRightClickById(newPage, dataId) {
     }
 }
 
-module.exports = { performRightClickById };
+module.exports = { performRightClickOptionByTitle };
 
 
 

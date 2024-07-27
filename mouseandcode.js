@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 const { launchBrowserAndNavigateToDocument } = require('./components/launchBrowserAndNavigate.js');
-const { newSketch } = require('./components/newSketch.js');
+const { performTest } = require('./components/newSketch.js');
 const { clickButtonByIndex } = require('./components/clickButtonByIndex.js');
 const copySketchFunction = require('./components/copySketchFunction.js');
 const pasteIntoSketchFunction = require('./components/pasteIntoSketchFunction.js');
@@ -14,11 +14,7 @@ const waitForEnter = require('./components/waitForEnter.js');
 const searchAndClickTransform = require('./components/searchAndClickTransform.js');
 const searchAndClickCustomExtrude2 = require('./components/searchAndClickCustomExtrude2.js');
 const searchAndClickExtrude = require('./components/searchAndClickExtrude.js');
-// const { performRightClickOptionByTitle } = require('./components/performRightClickOptionByTitle.js');
-const { performRightClickById } = require('./components/performRightClickById.js');
-
-
-
+const { performRightClickOptionByTitle } = require('./components/performRightClickOptionByTitle.js');
 
 (async () => {
     try {
@@ -26,41 +22,37 @@ const { performRightClickById } = require('./components/performRightClickById.js
         // Launch browser and navigate to the document
         const newPage = await launchBrowserAndNavigateToDocument(); // Ensure this returns a newPage object
 
-        // Click button by index
-        const desiredIndex = 6;
+        // NEW SKETCH
+        // await performTest(newPage);
+
+        // Adding extrude function to the code
+        //ORIGINAL GOOD  const desiredIndex = 5;
+        const desiredIndex = 5;
         await clickButtonByIndex(newPage, desiredIndex);
-        const selector = 'div[data-id="XgmGAQ7RqnVg1wa8"]'; // Replace with the appropriate selector
-        const title = '(2) Extrude 1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
-        // Correctly define dataId
-        const dataId = 'XgmGAQ7RqnVg1wa8';
+
+        // Right-click option
+        // const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
+        const title = '(1) Initial Sketch'; // Replace with the desired title
+        const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
+        // const title = '(3) Extrude Sketch(1.03) did not regenerate properly: Select a sketch plane.'; // Replace with the desired title
+        // const selector = 'div[data-id="XgmGAQ7RqnVg1wa8"]'; // Replace with the appropriate selector
+        // const title = '(2)Extrude1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
 
 
         console.log("AAAAAAAAAA");
         await waitForEnter();
         console.log("BBBBBBBBBB");
 
+
         // Perform right-click on the specified element
         console.log('Right-clicking on the specified element.');
-        // const selector = 'div[data-id="XgmGAQ7RqnVg1wa8"]'; // Replace with the appropriate selector
-        // const title = '(2) Extrude 1(4.00) did not regenerate properly: Select face or sketch region to extrude.'; // Replace with the desired title
-
-
-
-        console.log("CCCCCCCCCC");
-        await waitForEnter();
-        console.log("DDDDDDDDDD");
-        // const editOptions3 = await performRightClickOptionByTitle(newPage, selector, title);
-        const editOptions3 = await performRightClickById(newPage, dataId);
-
-
-        console.log('Right-click options:', editOptions3);
-
+        const editOptions3 = await performRightClickOptionByTitle(newPage, selector, title);
+        console.log(editOptions3);
 
 
         console.log("CCCCCCCCCC");
         await waitForEnter();
         console.log("DDDDDDDDDD");
-
 
 
         // Perform the edit function
@@ -71,6 +63,7 @@ const { performRightClickById } = require('./components/performRightClickById.js
         console.log("EEEEEEEEEE");
         await waitForEnter();
         console.log("FFFFFFFFFF");
+
 
 
 
